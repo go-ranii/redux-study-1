@@ -9,14 +9,20 @@ export default function Test() {
     const plus = useCallback(({ value, name }) => {
         dispatch(counterActions.increment({ value, name }));
     }, [dispatch]);
+    const plusTen = useCallback(({ value, name }) => {
+        dispatch(counterActions.tenIncrement({ value, name }));
+    }, [dispatch]);
 
     const minus = useCallback(({ value,name }) => {
         dispatch(counterActions.decrement({ value, name }));
     }, [dispatch]);
-
+    const minusTen = useCallback(({ value,name }) => {
+        dispatch(counterActions.tenDecrement({ value, name }));
+    }, [dispatch]);
     return (
         <div>
             <h1>Counter</h1>
+            <button onClick={() => minusTen({ value })}>--</button>
             <button onClick={() => minus({ value })}>-</button>
             <span>{value}</span>
             
@@ -28,6 +34,7 @@ export default function Test() {
                 <p>{name}</p>
                 }
             <button onClick={() => plus({ value })}>+</button>
+            <button onClick={() => plusTen({ value })}>++</button>
         </div>
     );
 }
